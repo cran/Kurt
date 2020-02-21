@@ -1,0 +1,10 @@
+exportPattern("^[[:alpha:]]+")
+importFrom("stats","pnorm","pchisq","cov","var","sd")
+importFrom("graphics", "pairs", "plot","hist")
+importFrom("grDevices", "dev.new")
+importFrom("matrixcalc", "commutation.matrix", "vec") 
+import("labstatR") 
+import("polynom") 
+import("expm") 
+
+
