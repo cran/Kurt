@@ -1,4 +1,5 @@
-ExtKur <-function(data,iterations,maxmin){
+ExtKur <-
+function(data,iterations,maxmin){
 #Kurtosis-based projection pursuit. Data projection with either maximal or minimal
 #kurtosis.The kurtosis of a distribution is intended as the fourth standardized
 #moment of the distribution itself. ExtKur calls the functions "optik" and
@@ -11,7 +12,8 @@ ExtKur <-function(data,iterations,maxmin){
 ##linear = a vector of coefficients. (linearMAX,linearMIN)
 ##projection = vector of projected data.(projectionMAX,projectionMIN)
 ##kurt= extreme kurtosis attainable by a data projection. (kurttMAX, kurtMIN)
-  kurMAX<-NULL
+
+kurMAX<-NULL
   dMAX<-NULL
   pMAX<-NULL
   linearMAX<-NULL
@@ -36,28 +38,29 @@ ExtKur <-function(data,iterations,maxmin){
   rm("dMAX")
   rm("kurMAX")
   rm("pMAX")
-  if(iterations<0) {
+
+if(iterations<0) {
     message("Error, iterations must be a number greater than zero")
   }
   if(iterations==0) {
     message ("Error, iterations must be a number greater than zero")
   }
+
+
+
 data<-data.matrix(data)
 if(iterations>0) {
 
 n<-nrow(data)
 d<-ncol(data)
-
 O<-optik(data)#generates the starting values
-
 
 if(maxmin=="MAX"){#we'll find data projection with maximal kurtosis
 
 M<-kurMAX  ##starting value of maximal kurtosis
 v<-dMAX ##starting value of linear
+
 pMAX<-pMAX
-
-
 
 rm(kurMAX,envir = as.environment(1), inherits = FALSE)
 rm(pMAX,envir = as.environment(1), inherits = FALSE)
@@ -69,6 +72,7 @@ for(i in 1:iterations){
 for(j in 1:d){
   y<-data[,j]#j-th column of the data matrix
   v[j]<-0
+
   EXTKURBIV<-ExtKurBiv(cbind(data%*%v,y),"MAX")
   k<-kurtMAX###kurtosis of the new linear combination
   v[j]<-linearMAX[2,1]/linearMAX[1,1]
@@ -81,6 +85,13 @@ projectionMAX<<-data%*%v#project the data onto the direction of v
      }
 }
 
+#####print("kurt")
+#####print(kurttMAX)
+#####print("linear")
+#####print(linearMAX)
+#####print("projection")
+#####print(projectionMAX)
+
 multi_returnExtKur_1 <- function() {
   my_listExtKur_1 <- list("kurt" = kurttMAX,"linear"=linearMAX,"projection"=projectionMAX )
   return(my_listExtKur_1)
@@ -89,19 +100,17 @@ multi_returnExtKur_1 <- function() {
 b<-multi_returnExtKur_1()
 return(b)
 
-
-
 }
 
 
-
-
+#####}
 else if(maxmin=="MIN"){
 
 ###this follows if maxmin==MIN
 m<-kurMINbis  ##starting value of minimal kurtosis
 v<-dMINbis ##starting value of linear
 pMINbis<-pMINbis
+
 x<-data%*%v #starting value of projection
 
 
@@ -122,7 +131,14 @@ linearMIN<<-v#set the vector of coefficients equal to linearMIN
 projectionMIN<<-data%*%v#project the data onto the direction of v
 
              }
-}
+                       }
+
+#####print("kurt")
+#####print(kurtMIN)
+#####print("linear")
+#####print(linearMIN)
+#####print("projection")
+#####print(projectionMIN)
 
 rm(kurMINbis,envir = as.environment(1), inherits = FALSE)
 rm(dMINbis,envir = as.environment(1), inherits = FALSE)

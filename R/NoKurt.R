@@ -16,7 +16,8 @@ function(data,number){
 ##3- The function calls the function Cum4
 
 
-
+ #####library(labstatR)
+#####library(expm) #we load and attach the expm package since we shall use the sqrtm function included in the espm package
 
   NProjections<-NULL
   Nkurtoses<-NULL
@@ -28,19 +29,19 @@ function(data,number){
   rm("Nkurtoses")
   rm("MATRIX")
   rm("K4")
-  
-  
+
+
 data<-data.matrix(data)
 n<-nrow(data) #number of units
 d<-ncol(data) #number of variables
 
 if(number <=1){ 
-message("ERROR, number must be greater than one and smaller than the number of variables")
+print("ERROR, number must be greater than one and smaller than the number of variables")
 }
 else
 
 if(number>(d-1)) {
-message("ERROR, number must be greater than one and smaller than the number of variables")
+print("ERROR, number must be greater than one and smaller than the number of variables")
 }
 else
 
@@ -55,7 +56,7 @@ V<-eigenvector_A[,((ncol(eigenvector_A)-number)+1):ncol(eigenvector_A)]
 
 Projections<-Z%*%V
 
-
+#library(labstatR)#Load and attach the labstatR package,since we shall use the kurt function included in the labstatR package
 kurtoses<-apply(Projections,2,kurt)
 
 abskurtoses<-matrix(abs(kurtoses-3),)
@@ -63,8 +64,12 @@ abskurtoses<-matrix(abs(kurtoses-3),)
 order(abskurtoses)
 NProjections<<-cbind(Projections[,order(abskurtoses)])#data projections ordered according to the absolute values
 #of their excess kurtoses
+print("Projections")
+print(NProjections)
 
 Nkurtoses<<-apply(NProjections,2,kurt)
+#####print("Kurtoses")
+#####print(Nkurtoses)
 
 ZZ<-data.matrix(cbind(data,NProjections))##
 cov_ZZ<-cov(ZZ)*(n-1)/n
@@ -72,6 +77,8 @@ cov_XX<-cov_ZZ[1:d,1:d]
 cov_XY<-cov_ZZ[1:d,(d+1):ncol(cov_ZZ)]
 
 MATRIX<<-solve(cov_XX)%*%cov_XY
+#####print("MATRIX")
+#####print(MATRIX)
 
 multi_returnNoKurt_1 <- function() {
   my_listNoKurt_1 <- list("Projections" = NProjections, "Kurtoses" = Nkurtoses,"MATRIX"= MATRIX)
@@ -80,11 +87,5 @@ multi_returnNoKurt_1 <- function() {
 }
 b<-multi_returnNoKurt_1()
 return(b)
-
-
-
-
 rm(K4,envir = as.environment(1), inherits = FALSE)
-
-
 }

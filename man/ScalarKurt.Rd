@@ -55,7 +55,8 @@ Cinzia Franceschini and Nicola Loperfido
 \examples{
 data(iris)
 iris<-data.matrix(iris)#returns the matrix obtained by converting the data frame to numeric mode
-ScalarKurt(iris[,1:4],"moment","Mardia","upper")#values of Mardia's kurtosis test for normality 
+ScalarKurt(iris[,1:4],"moment","Mardia","upper")#returns the statistic and the p-value
+#of Mardia's kurtosis test for normality 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

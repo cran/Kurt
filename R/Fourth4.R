@@ -11,11 +11,13 @@ function(data,type,shape){
 #Values in output
 #M= fourth moment matrix
 #MM= fourth moment matrix (rectangular)
-  
-  
-  MM<-NULL
-  rm("MM")
-  
+  #requireNamespace("expm")
+#library(expm)
+
+MM<-NULL
+rm("MM")
+
+
   data<-data.matrix(data)
 size<-dim(data)#dimension of data
 n<-nrow(data)#number of observations
@@ -48,11 +50,7 @@ M<-A/n
 
 if (shape=="square"){
 M<<-M
-
-
-
-
-#"Fourth moment matrix"
+#####print("Fourth moment matrix")
 return(M)
 }
 
@@ -68,7 +66,7 @@ AA<-AA+kron3
 }
 
 MM<<-AA/n
-#"Fourth moment matrix"
+#####print("Fourth moment matrix")
 return(MM)
 
 }

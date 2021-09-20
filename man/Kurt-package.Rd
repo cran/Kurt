@@ -42,9 +42,9 @@ Franceschini, C. and Loperfido, N. (2012). On some Inequalities between Measures
     
     Loperfido, N. (2017). A New Kurtosis Matrix, with Statistical Applications. Linear Algebra and its Applications 512, 1-17.
     
-    Loperfido N. (2020). Kurtosis-Based Projection Pursuit for Outlier Detection in Financial Time Series. The European Journal of Finance, 26, 142-164.
+    Loperfido N. (2019). Kurtosis-Based Projection Pursuit for Outlier Detection in Financial Time Series. The European Journal of Finance, to appear.
     
-    Loperfido, N. (2020). Some Remarks on Koziol's Kurtosis. Journal of Multivariate Analysis 175,104565.
+    Loperfido, N. (2020). Some Remarks on Koziol's Kurtosis. Journal of Multivariate Analysis 175, to appear.
     
     Malkovich, J.F. and Afifi, A.A. (1973). On Tests for Multivariate Normality. J. Amer. Statist. Ass. 68, 176-179.
     

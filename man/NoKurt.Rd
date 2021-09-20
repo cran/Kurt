@@ -47,6 +47,6 @@ Cinzia Franceschini and Nicola Loperfido
 %}
 \examples{
 data(iris)
-iris<-data.matrix(iris[,1:4])#returns the matrix obtained by converting the dframe to numeric mode
+iris<-data.matrix(iris[,1:4])
 NoKurt(iris[,1:4],3)#returns data projections whose excess kurtosis is as close to zero as possible
 }

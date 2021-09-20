@@ -12,7 +12,8 @@ function(data,maxmin){
 #kurtMAX= maximal kurtosis attainable by a data projection (M)
 #kurtMIN= minimal kurtosis attainable by a data projection  (m)
 
-  linearMAX<-NULL
+
+linearMAX<-NULL
   projectionMAX<-NULL
   linearMIN<-NULL
   projectionMIN<-NULL
@@ -24,14 +25,19 @@ function(data,maxmin){
   rm("projectionMIN")
   rm("kurtMAX")
   rm("kurtMIN")
-  
-  
+
+
 
 if(ncol(data)!=2){
-message("ERROR, data must be a matrix with two variables ")
+print("ERROR, data must be a matrix with two variables ")
 }
 
- 
+  # requireNamespace("polynom","expm","labstatR","MASS")
+
+#library(MASS)#we need this package 
+#library(polynom)#package needed to find solutions of the polynomial
+#####library(expm)#we need this package
+#####library(labstatR)#package needed to use the function kurt
 data<-data.matrix(data)
 n<-nrow(data)#number of units
 x.mean<-apply(data,2,mean)#mean vector
@@ -83,7 +89,14 @@ if(maxmin=="MAX") {#if we are interested in the projections maximising kurtosis.
                         }
                        }
 
-       multi_return1 <- function() {
+#####print("maximal kurtosis") 
+#####print(M)##the maximum value of kurtosis
+#####print("Linear MAX")
+#####print(linearMAX)
+#####print("projectionMAX")
+#####print(projectionMAX)
+
+multi_return1 <- function() {
          my_list1 <- list("maximal kurtosis" = M, "coefficients of the projection maximising kurtosis" = linearMAX, "projection with maximal kurtosis" = projectionMAX)
          return(my_list1)
          
@@ -96,6 +109,7 @@ if(maxmin=="MAX") {#if we are interested in the projections maximising kurtosis.
     
 
 }
+#####}
 
 
 
@@ -110,7 +124,14 @@ projectionMIN<<-data.matrix(data)%*%linearMIN
 
 }
 }
-  multi_return2 <- function() {
+#####print("minimal kurtosis") 
+#####print(m)##the maximum value of kurtosis
+#####print("Linear MIN")
+#####print(linearMIN)
+#####print("projection MIN")
+#####print(projectionMIN)
+
+multi_return2 <- function() {
     my_list2 <- list("minimal kurtosis" = m, "coefficients of the projection minimising kurtosis" = linearMIN, "projection with minimal kurtosis" = projectionMIN)
     return(my_list2)
     }
@@ -118,5 +139,4 @@ projectionMIN<<-data.matrix(data)%*%linearMIN
   return(c)
 
 }
-
-}
+      }

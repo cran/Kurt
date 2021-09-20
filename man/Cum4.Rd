@@ -47,12 +47,8 @@ Cum4(data, type, shape)
 %\seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 %}
-\examples{
-data(iris)
+\examples{data(iris)
 iris<-data.matrix(iris)#returns the matrix obtained by converting the data frame to numeric mode
 Cum4(iris[,1:4], 1, "square") # returns a matrix containing the fourth cumulants of the given data
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-%\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+

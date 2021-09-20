@@ -49,7 +49,7 @@ Cinzia Franceschini and Nicola Loperfido
 \examples{
 data(iris)
 iris<-data.matrix(iris)#returns the matrix obtained by converting the data frame to numeric mode
-optik(iris[,1:4])#startingvalues of the iteration aimed at finding projections with extreme kurtosis}
+optik(iris[,1:4])#starting values of the projections with extreme kurtosis}
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
